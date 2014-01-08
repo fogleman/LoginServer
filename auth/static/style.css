@@ -1,0 +1,89 @@
+body {
+    padding: 20px 0;
+}
+
+.container {
+    max-width: 730px;
+}
+
+.header {
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+}
+
+.header img {
+    float: left;
+    margin-right: 10px;
+    margin-top: -5px;
+}
+
+.header h2 {
+    margin: 0;
+    line-height: 40px;
+    padding-bottom: 20px;
+}
+
+.content {
+    margin-bottom: 20px;
+}
+
+.footer {
+    padding: 10px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+.form-login h3 {
+    margin-top: 0;
+}
+
+.form-login .form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.forgot {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.button-row th {
+    line-height: 34px !important;
+    text-shadow: 0 1px 0 #fff;
+    background-image: -webkit-linear-gradient(top, #fff 0, #eee 100%);
+    background-image: linear-gradient(to bottom, #fff 0, #eee 100%);
+    background-repeat: repeat-x;
+}
+
+.button-row td {
+    line-height: 30px !important;
+}
+
+.button-row .btn {
+    float: right;
+    margin-left: 8px;
+}
+
+.clipboard {
+    width: 180px;
+}
+
+.zeroclipboard-is-hover, .zeroclipboard-is-active {
+    color: #333333;
+    text-decoration: none;
+    background-color: #ebebeb;
+    border-color: #adadad;
+}
+
+.zeroclipboard-is-active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}

@@ -1,0 +1,50 @@
+{% from "util.html" import nav_link with context %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Craft Login Server</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+        <link href="{{ static('favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
+        <link href="{{ static('style.css') }}" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+        <script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="{{ static('ZeroClipboard.min.js') }}"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    {% if g.user %}
+                        {{ nav_link('Home', 'index') }}
+                        {{ nav_link('Logout', 'logout') }}
+                    {% else %}
+                    {% endif %}
+                </ul>
+                <img src="{{ static('icon.png') }}" width="48" height="48">
+                <h2>
+                    <a href="{{ url_for('index') }}" class="text-muted">Craft Login Server</a>
+                </h2>
+            </div>
+            <div class="content">
+                {% for message in get_flashed_messages(category_filter=["message"]) %}
+                    <div class="alert alert-info">{{ message }}</div>
+                {% endfor %}
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="footer clearfix">
+                <p style="float: right;"><strong><a href="http://www.michaelfogleman.com/craft/">http://www.michaelfogleman.com/craft/</a></strong></p>
+                <p style="float: left;">&copy; <a href="http://www.michaelfogleman.com/">Michael Fogleman</a>, 2013. All rights reserved.</p>
+            </div>
+        </div>
+    </body>
+</html>

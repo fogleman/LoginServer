@@ -1,0 +1,16 @@
+{% for token in get_flashed_messages(category_filter=["token"]) %}
+    <div class="alert alert-danger">
+        <strong>Important!</strong><br>
+        Copy and paste the following line into the Craft game window.
+        <pre style="margin: 10px 0">/identity {{ g.user.username }} {{ token }}</pre>
+        <button class="btn btn-default clipboard" id="clipboard" data-clipboard-text="/identity {{ g.user.username }} {{ token }}">
+            Copy to Clipboard
+        </button>
+        <script>
+            var clip = new ZeroClipboard($("#clipboard"), {moviePath: "{{ static('ZeroClipboard.swf') }}"});
+            clip.on('complete', function(client, args) {
+                $("#clipboard").text("Copied!");
+            });
+        </script>
+    </div>
+{% endfor %}

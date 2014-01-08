@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if g.user %}
+        {% include 'flash_token.html' %}
+        {% include 'identity_tokens.html' %}
+    {% else %}
+        {% include 'login.html' %}
+    {% endif %}
+{% endblock %}

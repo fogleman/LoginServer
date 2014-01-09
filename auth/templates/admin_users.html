@@ -9,22 +9,27 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Username</th>
-                    <th>E-mail</th>
-                    <th>Created</th>
-                    <th>Seen</th>
-                    <th>Status</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Avatar</th>
+                    <th class="text-center">Username</th>
+                    <th class="text-center">E-mail</th>
+                    <th class="text-center">Created / Last Seen</th>
+                    <th class="text-center">Flags</th>
                 </tr>
             </thead>
             <tbody>
                 {% if users %}
                     {% for user in users %}
-                        <tr>
-                            <td>{{ user.username }}</td>
-                            <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
-                            <td>{{ user.created.strftime('%Y-%m-%d %H:%M:%S') }}</td>
-                            <td>{{ user.touched.strftime('%Y-%m-%d %H:%M:%S') }}</td>
-                            <td>
+                        <tr class="middle">
+                            <td class="text-center">{{ user.user_id }}</td>
+                            <td class="text-center"><img src="{{ user.email | gravatar(size=48) }}"></td>
+                            <td class="text-center">{{ user.username }}</td>
+                            <td class="text-center"><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+                            <td class="text-center">
+                                {{ user.created.strftime('%Y-%m-%d %H:%M:%S') }}<br>
+                                {{ user.touched.strftime('%Y-%m-%d %H:%M:%S') }}
+                            </td>
+                            <td class="text-center">
                                 {% if not user.enabled %}
                                     <span class="label label-danger">Disabled</span>
                                 {% endif %}
@@ -39,7 +44,7 @@
                     {% endfor %}
                 {% else %}
                     <tr>
-                        <td colspan=5 style="text-align: center;">
+                        <td colspan=6 style="text-align: center;">
                             No users to display.
                         </td>
                     </tr>

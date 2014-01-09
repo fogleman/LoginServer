@@ -74,6 +74,10 @@ body {
     margin-left: 8px;
 }
 
+tr.middle td {
+    vertical-align: middle !important;
+}
+
 .clipboard {
     width: 180px;
 }

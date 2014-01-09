@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <ul class="nav nav-tabs" style="margin-bottom: 20px;">
+        <li class="active"><a href="{{ url_for('admin_user') }}">Users</a></li>
+        <li><a href="{{ url_for('admin_access') }}">Access Log</a></li>
+    </ul>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>E-mail</th>
+                    <th>Created</th>
+                    <th>Seen</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if users %}
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.username }}</td>
+                            <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+                            <td>{{ user.created.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                            <td>{{ user.touched.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                            <td>
+                                {% if not user.enabled %}
+                                    <span class="label label-danger">Disabled</span>
+                                {% endif %}
+                                {% if not user.verified %}
+                                    <span class="label label-warning">Unverified</span>
+                                {% endif %}
+                                {% if user.admin %}
+                                    <span class="label label-primary">Admin</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan=5 style="text-align: center;">
+                            No users to display.
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

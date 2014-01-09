@@ -2,7 +2,7 @@ from flask import render_template, url_for, redirect, g, request, flash, session
 from werkzeug.security import generate_password_hash
 from auth import app, db
 from forms import LoginForm, RegistrationForm, IdentityTokenForm
-from hooks import login_required
+from hooks import admin_required, login_required
 from models import User, IdentityToken, AccessToken
 from util import get_serializer
 import datetime
@@ -65,6 +65,20 @@ def verify_email(payload):
     db.session.commit()
     flash('E-mail verification successful - thank you!')
     return redirect(url_for('index'))
+
+@app.route('/admin/user')
+@admin_required
+def admin_user():
+    users = list(User.query.order_by(User.user_id))
+    return render_template('admin_users.html', users=users)
+
+@app.route('/admin/access')
+@admin_required
+def admin_access():
+    access_tokens = list(AccessToken.query.order_by(
+        db.desc(AccessToken.client_timestamp)))
+    return render_template('admin_access_tokens.html',
+        access_tokens=access_tokens)
 
 @app.route('/access')
 @login_required

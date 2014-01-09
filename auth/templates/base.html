@@ -25,6 +25,9 @@
                 <ul class="nav nav-pills pull-right">
                     {% if g.user %}
                         {{ nav_link('Home', 'index') }}
+                        {% if g.user.admin %}
+                            {{ nav_link('Admin', 'admin_user') }}
+                        {% endif %}
                         {{ nav_link('Logout', 'logout') }}
                     {% else %}
                     {% endif %}

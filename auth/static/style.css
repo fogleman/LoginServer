@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    max-width: 730px;
+    max-width: 750px;
 }
 
 .header {
@@ -35,6 +35,10 @@ body {
 
 .form-login h3 {
     margin-top: 0;
+}
+
+.form-login button {
+    margin-bottom: 20px;
 }
 
 .form-login .form-control {

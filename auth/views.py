@@ -85,7 +85,8 @@ def admin_access():
 def access():
     access_tokens = list(g.user.access_tokens.order_by(
         db.desc(AccessToken.client_timestamp)).limit(100))
-    return render_template('access_tokens.html', access_tokens=access_tokens)
+    return render_template('access_tokens.html',
+        access_tokens=access_tokens)
 
 @app.route('/identity/create', methods=['GET', 'POST'])
 @login_required

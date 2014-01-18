@@ -21,7 +21,7 @@
                         <tr>
                             <td style="width: 25%;">{{ access_token.client_timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
                             <td style="width: 25%;">{{ access_token.client_addr }}</td>
-                            <td style="width: 25%;">{{ access_token.server_addr }}</td>
+                            <td style="width: 25%;">{{ access_token.server_addr_str }}</td>
                             <td style="width: 25%;">
                                 {{ access_token.identity_token.name }}
                                 {% if not access_token.identity_token.enabled %}

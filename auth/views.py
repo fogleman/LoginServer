@@ -76,7 +76,7 @@ def admin_user():
 @admin_required
 def admin_access():
     access_tokens = list(AccessToken.query.order_by(
-        db.desc(AccessToken.client_timestamp)))
+        db.desc(AccessToken.client_timestamp)).limit(1000))
     return render_template('admin_access_tokens.html',
         access_tokens=access_tokens)
 

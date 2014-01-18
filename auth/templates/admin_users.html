@@ -13,7 +13,7 @@
                     <th class="text-center">Avatar</th>
                     <th class="text-center">Username</th>
                     <th class="text-center">E-mail</th>
-                    <th class="text-center">Created / Last Seen</th>
+                    <th class="text-center">Logins</th>
                     <th class="text-center">Flags</th>
                 </tr>
             </thead>
@@ -25,10 +25,7 @@
                             <td class="text-center"><img src="{{ user.email | gravatar(size=48) }}"></td>
                             <td class="text-center">{{ user.username }}</td>
                             <td class="text-center"><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
-                            <td class="text-center">
-                                {{ user.created.strftime('%Y-%m-%d %H:%M:%S') }}<br>
-                                {{ user.touched.strftime('%Y-%m-%d %H:%M:%S') }}
-                            </td>
+                            <td class="text-center">{{ user.access_tokens.count() }}</td>
                             <td class="text-center">
                                 {% if not user.enabled %}
                                     <span class="label label-danger">Disabled</span>

@@ -9,32 +9,25 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th style="width: 20%;">Username</th>
-                    <th style="width: 20%;">Timestamp</th>
-                    <th style="width: 20%;">Client</th>
-                    <th style="width: 20%;">Server</th>
-                    <th style="width: 20%;">Identity Token</th>
+                    <th style="width: 25%;">Username</th>
+                    <th style="width: 25%;">Timestamp</th>
+                    <th style="width: 25%;">Client</th>
+                    <th style="width: 25%;">Server</th>
                 </tr>
             </thead>
             <tbody>
                 {% if access_tokens %}
                     {% for access_token in access_tokens %}
                         <tr>
-                            <td style="width: 20%;">{{ access_token.user.username }}</td>
-                            <td style="width: 20%;">{{ access_token.client_timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
-                            <td style="width: 20%;">{{ access_token.client_addr }}</td>
-                            <td style="width: 20%;">{{ access_token.server_addr }}</td>
-                            <td style="width: 20%;">
-                                {{ access_token.identity_token.name }}
-                                {% if not access_token.identity_token.enabled %}
-                                    *
-                                {% endif %}
-                            </td>
+                            <td style="width: 25%;">{{ access_token.user.username }}</td>
+                            <td style="width: 25%;">{{ access_token.client_timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                            <td style="width: 25%;">{{ access_token.client_addr }}</td>
+                            <td style="width: 25%;">{{ access_token.server_addr }}</td>
                         </tr>
                     {% endfor %}
                 {% else %}
                     <tr>
-                        <td colspan=5 style="text-align: center;">
+                        <td colspan=4 style="text-align: center;">
                             No logins have yet been recorded.
                         </td>
                     </tr>
@@ -42,7 +35,7 @@
             </tbody>
         </table>
         <p class="text-center"><small>
-            <strong>Note:</strong> Deleted identity tokens are marked with an asterisk.
+            <strong>Note:</strong> Only the most recent 1000 accesses are listed.
         </small></p>
     </div>
 {% endblock %}

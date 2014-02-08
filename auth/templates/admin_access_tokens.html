@@ -2,32 +2,27 @@
 
 {% block content %}
     <ul class="nav nav-tabs" style="margin-bottom: 20px;">
-        <li><a href="{{ url_for('index') }}">Identity Tokens</a></li>
-        <li class="active"><a href="{{ url_for('access') }}">Access Log</a></li>
+        <li><a href="{{ url_for('admin_user') }}">Users</a></li>
+        <li class="active"><a href="{{ url_for('admin_access') }}">Access Log</a></li>
     </ul>
     <div class="access-tokens">
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th style="width: 25%;">Username</th>
                     <th style="width: 25%;">Timestamp</th>
                     <th style="width: 25%;">Client</th>
                     <th style="width: 25%;">Server</th>
-                    <th style="width: 25%;">Identity Token</th>
                 </tr>
             </thead>
             <tbody>
                 {% if access_tokens %}
                     {% for access_token in access_tokens %}
                         <tr>
+                            <td style="width: 25%;">{{ access_token.user.username }}</td>
                             <td style="width: 25%;">{{ access_token.client_timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
                             <td style="width: 25%;">{{ access_token.client_addr }}</td>
                             <td style="width: 25%;">{{ access_token.server_addr_str }}</td>
-                            <td style="width: 25%;">
-                                {{ access_token.identity_token.name }}
-                                {% if not access_token.identity_token.enabled %}
-                                    *
-                                {% endif %}
-                            </td>
                         </tr>
                     {% endfor %}
                 {% else %}
@@ -40,7 +35,7 @@
             </tbody>
         </table>
         <p class="text-center"><small>
-            <strong>Note:</strong> Only the most recent 100 accesses are listed. Deleted identity tokens are marked with an asterisk.
+            <strong>Note:</strong> Only the most recent 1000 accesses are listed.
         </small></p>
     </div>
 {% endblock %}

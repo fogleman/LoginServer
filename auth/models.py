@@ -76,6 +76,12 @@ class AccessToken(db.Model):
         self.server_addr = server_addr
         self.server_timestamp = server_timestamp
     @property
+    def server_addr_str(self):
+        known_servers = {
+            '162.243.195.82': 'michaelfogleman.com',
+        }
+        return known_servers.get(self.server_addr, self.server_addr)
+    @property
     def age(self):
         return datetime.datetime.utcnow() - self.client_timestamp
     def check_token(self, token, max_age):

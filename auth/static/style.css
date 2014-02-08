@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    max-width: 730px;
+    max-width: 750px;
 }
 
 .header {
@@ -37,6 +37,10 @@ body {
     margin-top: 0;
 }
 
+.form-login button {
+    margin-bottom: 20px;
+}
+
 .form-login .form-control {
     position: relative;
     font-size: 16px;
@@ -68,6 +72,10 @@ body {
 .button-row .btn {
     float: right;
     margin-left: 8px;
+}
+
+tr.middle td {
+    vertical-align: middle !important;
 }
 
 .clipboard {

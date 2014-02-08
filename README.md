@@ -4,6 +4,10 @@ Online multiplayer game login server for secure user authentication. Written in 
 
 https://craft.michaelfogleman.com/
 
+### Diagram
+
+![Diagram](http://www.michaelfogleman.com/static/img/login_server.png)
+
 ### User Registration
 
    * The user visits the web front-end of the login server to register for a new account.

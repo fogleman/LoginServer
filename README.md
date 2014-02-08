@@ -4,7 +4,7 @@ Online multiplayer game login server for secure user authentication. Written in 
 
 https://craft.michaelfogleman.com/
 
-### Diagram
+### Architecture
 
 ![Diagram](http://www.michaelfogleman.com/static/img/login_server.png)
 
@@ -13,8 +13,8 @@ https://craft.michaelfogleman.com/
    * The user visits the web front-end of the login server to register for a new account.
    * After registering and logging in, the user can manage “identity tokens.”
    * The user creates an identity token which is copied and pasted into the game client.
-   * An identity token looks like: 717e3c1a034247ef91e6b78dd8088b77
    * The game client saves the username and identity token to use for future logins.
+   * An identity token looks like: `717e3c1a034247ef91e6b78dd8088b77`
    * The user can revoke any identity token at any time. The identity tokens are more secure than regular passwords and the user doesn’t need to reuse or make up a new password.
 
 ### Login Process
@@ -24,7 +24,7 @@ https://craft.michaelfogleman.com/
    * Login Server checks for matching identity token in database (they are salted and hashed just like passwords).
    * If the identity token is valid, the Login Server creates a new, short-lived access token. This is sent back to the Game Client.
    * The Game Client sends the access token to the Game Server (this connection is plain text because we don’t need / want encrypted communication for game play). Access tokens can only be used once and expire in one minute.
-   * The Game Server sends the access token to the Login Server.
+   * The Game Server sends the access token to the Login Server to verify the client's request to authenticate.
    * If the access token is valid, unexpired and unused, the Login Server confirms a successful login and sends user information to the Game Server, such as a distinct user ID.
    * The Game Server can then use the user information as needed. The user is now logged in.
 

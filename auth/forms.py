@@ -1,6 +1,6 @@
-from flask.ext.wtf import Form
+from flask_wtf import Form
 from wtforms import TextField, PasswordField, validators
-from models import User
+from auth.models import User
 
 class LoginForm(Form):
     username = TextField('Username', [validators.Required()])

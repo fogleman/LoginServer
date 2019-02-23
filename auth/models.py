@@ -1,6 +1,6 @@
 from flask import url_for
 from auth import db
-from util import get_serializer
+from auth.util import get_serializer
 from werkzeug.security import check_password_hash
 import datetime
 

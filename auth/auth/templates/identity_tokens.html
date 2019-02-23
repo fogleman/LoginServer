@@ -1,0 +1,57 @@
+<ul class="nav nav-tabs" style="margin-bottom: 20px;">
+    <li class="active"><a href="{{ url_for('index') }}">Identity Tokens</a></li>
+    <li><a href="{{ url_for('access') }}">Access Log</a></li>
+</ul>
+<div class="identity-tokens">
+    {% for identity_token in identity_tokens %}
+        <div class="modal" id="delete{{ identity_token.identity_token_id }}" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Delete Token?</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete the "{{ identity_token.name }}" identity token?
+                    </div>
+                    <div class="modal-footer">
+                        <form action="{{ url_for('identity_delete', identity_token_id=identity_token.identity_token_id) }}" method="post">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Delete Token</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <table class="table table-bordered">
+        <tr class="button-row">
+            <th>
+                Identity Tokens
+                <a href="{{ url_for('identity_create') }}" class="btn btn-primary">Create Token</a>
+            </th>
+        </tr>
+        {% if identity_tokens %}
+            {% for identity_token in identity_tokens %}
+                <tr class="button-row">
+                    <td>
+                        {{ identity_token.name }}
+                        <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{ identity_token.identity_token_id }}">Delete</a>
+                        <!-- <a href="#" class="btn btn-sm btn-default">Rename</a> -->
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan=2 style="text-align: center;">
+                    Click "Create Token" to create a new identity token.
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+</div>
+<hr>
+<div>
+    <h4>What are identity tokens?</h4>
+    <p>Identity tokens are used in place of a password for authenticating in the game. Identity tokens are "installed" once and then you don't have to worry about them. You can create multiple identity tokens if you have the game installed on multiple computers. You can revoke any identity token at any time.</p>
+</div>

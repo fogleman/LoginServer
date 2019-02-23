@@ -1,0 +1,30 @@
+{% from "util.html" import render_field %}
+
+<div class="row">
+    <div class="col-md-6">
+        <form class="form-login" method="post">
+            <h3>Login <small>for returning users</small></h3>
+            {{ login_form.hidden_tag() }}
+            {{ render_field(login_form.username, required="", autofocus="") }}
+            {{ render_field(login_form.password, required="") }}
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="button" value="login">Login</button>
+        </form>
+        <!-- <p class="forgot"><a href="#">Forgot Password?</a></p> -->
+    </div>
+    <div class="col-md-6">
+        <form class="form-login" method="post">
+            <h3>Register <small>for new users</small></h3>
+            {{ registration_form.hidden_tag() }}
+            {{ render_field(registration_form.username, required="", autocomplete="off") }}
+            {{ render_field(registration_form.email, required="", autocomplete="off") }}
+            {{ render_field(registration_form.password, required="", autocomplete="off") }}
+            {{ render_field(registration_form.confirm_password, required="", autocomplete="off") }}
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="button" value="register">Register</button>
+        </form>
+    </div>
+</div>
+<hr>
+<div>
+    <h4>Why register?</h4>
+    <p>You can play on most game servers anonymously. However, without registering you will not be able to make changes in most areas of the world. After you are registered, game server admins can grant you various types of permissions.</p>
+</div>

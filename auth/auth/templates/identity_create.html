@@ -1,0 +1,20 @@
+{% from "util.html" import render_field_grid %}
+
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        <h3>Create Token</h3>
+        <form class="form-horizontal" method="post">
+            <p>Your token will be used instead of a password to authenticate with the login server during gameplay. Enter a name for the token below so you can keep track of where you used it and revoke the token if necessary.</p>
+            <p>Examples: Home, Work, Michael's iMac</p>
+            {{ form.hidden_tag() }}
+            {{ render_field_grid(form.name, "col-sm-6", required="", autofocus="") }}
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-default">Create Token</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,5 @@
+flask_wtf
+flask_sqlalchemy
+flask_gravatar
+flask_mail
+flask

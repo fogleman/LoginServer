@@ -3,7 +3,6 @@ from auth import app
 from auth.models import User
 import functools
 import urllib.parse as urlparse
-#import urlparse
 
 def static(path):
     root = app.config.get('STATIC_ROOT')

@@ -1,5 +1,0 @@
-Hello, {{ user.username }}. Thank you for registering.
-
-Please visit the following link to verify your e-mail address:
-
-{{ user.get_verification_link() }}

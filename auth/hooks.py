@@ -1,8 +1,9 @@
 from flask import url_for, g, session, redirect, request, abort
 from auth import app
-from models import User
+from auth.models import User
 import functools
-import urlparse
+import urllib.parse as urlparse
+#import urlparse
 
 def static(path):
     root = app.config.get('STATIC_ROOT')

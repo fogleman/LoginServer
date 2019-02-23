@@ -1,12 +1,12 @@
 from flask import render_template, url_for, redirect, g, request, flash, session, abort
 from werkzeug.security import generate_password_hash
 from auth import app, db
-from forms import LoginForm, RegistrationForm, IdentityTokenForm
-from hooks import admin_required, login_required
-from models import User, IdentityToken, AccessToken
-from util import get_serializer
+from auth.forms import LoginForm, RegistrationForm, IdentityTokenForm
+from auth.hooks import admin_required, login_required
+from auth.models import User, IdentityToken, AccessToken
+from auth.util import get_serializer
 import datetime
-import email
+import auth.email as email
 import uuid
 
 # Views

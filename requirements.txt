@@ -3,4 +3,5 @@ flask_mail
 flask_gravatar
 flask_sqlalchemy
 flask_wtf
+WTForms==2.2.1
 hooks

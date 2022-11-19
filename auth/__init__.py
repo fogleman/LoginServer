@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_mail import Mail
-from flask.ext.gravatar import Gravatar
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_gravatar import Gravatar
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object('auth.config')
